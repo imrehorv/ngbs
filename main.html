@@ -38,7 +38,18 @@
             <h2>Basic List Group</h2>
             <ul class="list-group" ng-repeat="x in items">
               <li ng-class="itemclass[$index]" ng-click="setActive($index)">{{x}}</li>
+            </ul>   
+
+            <select>
+                <option ng-repeat="x in items" ng-click="setActive($index)" ng-selected="selected==$index">{{x}}</option>
+            </select>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item" ng-repeat="x in items">
+                  <a ng-class="itemclassnav[$index]" ng-click="setActive($index)" href="#">{{x}}</a>
+                </li>
             </ul>             
+                             
       </div>
 </div>
 
@@ -48,8 +59,11 @@ app.controller('myCtrl', function($scope) {
     $scope.prozent=25;
     $scope.items=["First item","Second item","Third item"];
     $scope.itemclass=[];
+    $scope.itemclassnav=[];
+    $scope.selected=0;
     angular.forEach($scope.items,function() {
         $scope.itemclass.push("list-group-item");
+        $scope.itemclassnav.push("nav-link");
     });
 
     $scope.isSuccess=function() {
@@ -62,13 +76,22 @@ app.controller('myCtrl', function($scope) {
         return $scope.prozent>100;
     }
     $scope.setActive=function(index) {
-        console.log($scope.itemclass[index]);
+        var idx=0;
+        angular.forEach($scope.itemclassnav, function () {
+            console.log(idx+".:"+$scope.itemclassnav[idx++]);
+        });
+        
+        $scope.selected=index;
         $scope.itemclass=[];
+        $scope.itemclassnav=[];
         angular.forEach($scope.items,function() {
             $scope.itemclass.push("list-group-item");
+            $scope.itemclassnav.push("nav-link");
         });
-        $scope.itemclass[index]="list-group-item active";        
+        $scope.itemclass[index]="list-group-item active";
+        $scope.itemclassnav[index]="nav-link active";
     }
+    $scope.setActive($scope.selected);
 });
 </script>
 
