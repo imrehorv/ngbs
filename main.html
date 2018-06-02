@@ -25,14 +25,13 @@
       <div class="container"> 
             <button type="button" class="btn btn-outline-primary" ng-click="prozent=prozent+10">+10</button>
             <button type="button" class="btn btn-outline-primary" ng-click="prozent=prozent-10">-10</button>
-            <div style="height:30px"></div>
-            <div class="alert alert-success" ng-show="isSuccess()">
+            <div class="mt-5 mb-5 alert alert-success" ng-show="isSuccess()">
                     <strong>Success!</strong> Indicates a successful or positive action.
             </div>            
-            <div class="alert alert-warning" ng-show="isWarning()">
+            <div class="mt-5 mb-5  alert alert-warning" ng-show="isWarning()">
                     <strong>Warning!</strong>
             </div>            
-            <div class="alert alert-danger" ng-show="isDanger()">
+            <div class="mt-5 mb-5 alert alert-danger" ng-show="isDanger()">
                     <strong>Danger!</strong>
             </div>           
             <h2>Basic List Group</h2>
@@ -40,11 +39,11 @@
               <li ng-class="itemclass[$index]" ng-click="setActive($index)">{{x}}</li>
             </ul>   
 
-            <select>
+            <select class="mt-5">
                 <option ng-repeat="x in items" ng-click="setActive($index)" ng-selected="selected==$index">{{x}}</option>
             </select>
 
-            <ul class="nav nav-pills">
+            <ul class="mt-5 nav nav-pills">
                 <li class="nav-item" ng-repeat="x in items">
                   <a ng-class="itemclassnav[$index]" ng-click="setActive($index)" href="#">{{x}}</a>
                 </li>
